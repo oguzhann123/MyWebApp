@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Users</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"  />
+</head>
+<body>
+<!-- metni ortalamak icin bunu yaziyoruz-->
+<div class="container-fluid text-center" >  <!-- this deep section we use the glass container-fluid commission for boot chat css class is very convenient-->
+
+    <div> <h2>Manage Users</h2> </div>
+    <div class="m-2"> <!-- tablonun yerini degistirdik dikey bir sekilde vertical-->
+        <a class="h3"  th:href="@{/users/new}">Add New User </a>
+    </div>
+<div>
+
+    <table class="table table-bordered">  <!-- id , isim ve soyisimin oldugu yer burasi   table-bordered isim ve soy isimleri tablo sekline sokuyor -->
+        <thead class="thead-dark"> <!-- tablodaki id isim soyisimin rengini siyah yaptigi yer -->
+        <th>ID</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Enabled</th>
+        <th>
+
+        </th>
+        </thead>
+
+<tbody>
+<th:block th:each="user : ${listUsers}">  <!-- buraya kullanicinin  id , isim , soyisimi geliyor -->
+
+<tr>
+
+    <td>[[${user.id}]]</td>
+    <td>[[${user.Name}]]</td>           <!-- kullanicinin degerleri geliyor mehmet karatoprak edit delete gibi-->
+    <td>[[${user.Surname}]]</td>
+    <td>[[${user.Enabled}]]</td>
+
+    <td>
+        <a class="h4 mr-3" th:href="@{'/users/edit/'+${user.id}}">Edit</a>
+        <a class="h4" th:href="@{'/users/delete/'+${user.id}}">Delete</a>  <!-- edit ve delete ustune tiklama ozelliginin oldugu yer-->
+    </td>
+
+</tr>
+
+</th:block>
+
+</tbody>
+    </table>
+
+
+</div>
+
+
+
+</div>
+
+</body>
+</html>
